@@ -26,177 +26,147 @@ export default async function RecipePage({ params }: Props) {
     : null;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <article className="max-w-4xl mx-auto px-4 py-8">
       {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:text-orange">
-          Home
-        </Link>{" "}
-        &rsaquo;{" "}
-        <Link href="/browse-recipes" className="hover:text-orange">
-          Recipes
-        </Link>{" "}
-        &rsaquo; <span className="text-foreground">{recipe.title}</span>
+      <nav className="text-sm text-text-muted mb-6">
+        <Link href="/" className="hover:text-orange">Home</Link>
+        {" / "}
+        <Link href="/browse-recipes" className="hover:text-orange">Recipes</Link>
+        {" / "}
+        <span className="text-foreground">{recipe.title}</span>
       </nav>
 
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+      {/* Title & Meta */}
+      <header className="mb-8">
+        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
           {recipe.title}
         </h1>
 
-        {/* Meta */}
-        <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-text-muted">
           {recipe.categories.length > 0 && (
             <span>
-              <strong>Category:</strong>{" "}
-              {recipe.categories.map((rc) => rc.category.name).join(", ")}
+              {recipe.categories.map((rc, i) => (
+                <span key={rc.categoryId}>
+                  {i > 0 && ", "}
+                  <Link href={`/browse-recipes?category=${rc.category.slug}`} className="text-orange hover:underline">
+                    {rc.category.name}
+                  </Link>
+                </span>
+              ))}
             </span>
           )}
-          {recipe.cuisine && (
-            <span>
-              <strong>Cuisine:</strong> {recipe.cuisine}
-            </span>
-          )}
-          {recipe.cookingMethod && (
-            <span>
-              <strong>Method:</strong> {recipe.cookingMethod}
-            </span>
-          )}
+          {recipe.cuisine && <span>Cuisine: <strong>{recipe.cuisine}</strong></span>}
+          {recipe.cookingMethod && <span>Method: <strong>{recipe.cookingMethod}</strong></span>}
           {recipe.difficulty && (
-            <span>
-              <strong>Difficulty:</strong>{" "}
-              <span className="bg-orange text-white px-2 py-0.5 rounded text-xs font-bold">
-                {recipe.difficulty}
-              </span>
+            <span className="bg-orange text-white text-xs font-bold px-2 py-0.5 rounded">
+              {recipe.difficulty}
             </span>
           )}
         </div>
+      </header>
 
-        {recipe.description && (
-          <p className="text-gray-600 leading-relaxed text-lg">
-            {recipe.description}
-          </p>
-        )}
-      </div>
-
-      {/* Image */}
+      {/* Featured Image */}
       {recipe.imageUrl && (
-        <div className="mb-8 rounded-lg overflow-hidden">
+        <div className="mb-8">
           <img
             src={recipe.imageUrl}
             alt={recipe.title}
-            className="w-full h-auto max-h-[500px] object-cover"
+            className="w-full h-auto rounded"
           />
         </div>
       )}
 
+      {/* Description */}
+      {recipe.description && (
+        <p className="text-text-muted leading-relaxed mb-8 text-lg italic">
+          {recipe.description}
+        </p>
+      )}
+
+      {/* Action buttons */}
+      <div className="flex gap-3 mb-8 no-print">
+        <PrintButton />
+        <a href="#ingredients" className="btn-teal text-sm">Jump to Recipe</a>
+      </div>
+
       {/* Time & Servings Bar */}
-      <div className="bg-light-gray rounded-lg p-6 mb-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div className="recipe-meta-bar mb-10">
         {recipe.prepTime && (
           <div>
-            <p className="text-xs text-gray-500 uppercase font-bold">
-              Prep Time
-            </p>
-            <p className="text-lg font-bold text-foreground">
-              {recipe.prepTime}
-            </p>
+            <p className="text-xs text-text-muted uppercase font-bold tracking-wider">Prep Time</p>
+            <p className="text-base font-bold text-foreground mt-1">{recipe.prepTime}</p>
           </div>
         )}
         {recipe.cookTime && (
           <div>
-            <p className="text-xs text-gray-500 uppercase font-bold">
-              Cook Time
-            </p>
-            <p className="text-lg font-bold text-foreground">
-              {recipe.cookTime}
-            </p>
+            <p className="text-xs text-text-muted uppercase font-bold tracking-wider">Cook Time</p>
+            <p className="text-base font-bold text-foreground mt-1">{recipe.cookTime}</p>
           </div>
         )}
         {recipe.totalTime && (
           <div>
-            <p className="text-xs text-gray-500 uppercase font-bold">
-              Total Time
-            </p>
-            <p className="text-lg font-bold text-foreground">
-              {recipe.totalTime}
-            </p>
+            <p className="text-xs text-text-muted uppercase font-bold tracking-wider">Total Time</p>
+            <p className="text-base font-bold text-foreground mt-1">{recipe.totalTime}</p>
           </div>
         )}
         {recipe.servings && (
           <div>
-            <p className="text-xs text-gray-500 uppercase font-bold">
-              Servings
-            </p>
-            <p className="text-lg font-bold text-foreground">
-              {recipe.servings}
-            </p>
+            <p className="text-xs text-text-muted uppercase font-bold tracking-wider">Servings</p>
+            <p className="text-base font-bold text-foreground mt-1">{recipe.servings}</p>
           </div>
         )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Two-column layout for ingredients + instructions */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* Ingredients */}
-        <div className="md:col-span-1">
-          <div className="bg-white border border-gray-200 rounded-lg p-6 sticky top-24">
-            <h2 className="font-heading text-2xl font-bold mb-4 text-orange">
+        <div id="ingredients" className="lg:col-span-1">
+          <div className="bg-light-gray p-6 sticky top-24">
+            <h2 className="font-heading text-xl font-bold mb-4 pb-3 border-b-2 border-orange">
               Ingredients
             </h2>
-            <ul className="space-y-2">
+            <div>
               {ingredients.map((ing, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-2 text-sm leading-relaxed"
-                >
-                  <span className="w-2 h-2 rounded-full bg-orange mt-1.5 flex-shrink-0" />
+                <div key={i} className="ingredient-item">
                   {ing}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
 
         {/* Instructions */}
-        <div className="md:col-span-2">
-          <h2 className="font-heading text-2xl font-bold mb-6 text-teal">
+        <div className="lg:col-span-2">
+          <h2 className="font-heading text-xl font-bold mb-4 pb-3 border-b-2 border-orange">
             Instructions
           </h2>
-          <ol className="space-y-6">
+          <div>
             {instructions.map((step, i) => (
-              <li key={i} className="flex gap-4">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-teal text-white flex items-center justify-center font-bold text-sm">
-                  {i + 1}
-                </span>
-                <p className="text-gray-700 leading-relaxed pt-1">{step}</p>
-              </li>
+              <div key={i} className="instruction-step">
+                <div className="step-number">{i + 1}</div>
+                <p className="text-foreground leading-relaxed pt-1 flex-1">{step}</p>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </div>
 
       {/* Nutrition */}
       {nutrition && Object.keys(nutrition).length > 0 && (
-        <div className="mt-10 bg-light-gray rounded-lg p-6">
-          <h2 className="font-heading text-2xl font-bold mb-4">
+        <div className="mt-10 border border-border p-6">
+          <h2 className="font-heading text-xl font-bold mb-4 pb-3 border-b border-border">
             Nutrition Information
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {Object.entries(nutrition).map(([key, value]) => (
-              <div key={key} className="text-center">
-                <p className="text-xs text-gray-500 uppercase font-bold">
-                  {key}
-                </p>
-                <p className="text-lg font-bold text-foreground">{value}</p>
+              <div key={key}>
+                <p className="text-xs text-text-muted uppercase font-bold">{key}</p>
+                <p className="text-base font-bold text-foreground">{value}</p>
               </div>
             ))}
           </div>
         </div>
       )}
-
-      {/* Print Button */}
-      <div className="mt-8 flex gap-4">
-        <PrintButton />
-      </div>
-    </div>
+    </article>
   );
 }

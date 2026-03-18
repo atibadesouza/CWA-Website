@@ -2,18 +2,26 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #28292b;
+  --foreground: #2e2f31;
   --orange: #f89223;
+  --orange-hover: #e18521;
   --teal: #16a780;
-  --light-gray: #f5f5f5;
+  --light-gray: #f4f3f0;
+  --border: #ebebeb;
+  --text-muted: #919192;
+  --dark-bg: #28292b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-orange: var(--orange);
+  --color-orange-hover: var(--orange-hover);
   --color-teal: var(--teal);
   --color-light-gray: var(--light-gray);
+  --color-border: var(--border);
+  --color-text-muted: var(--text-muted);
+  --color-dark-bg: var(--dark-bg);
   --font-heading: var(--font-playfair);
   --font-body: var(--font-lato);
 }
@@ -28,28 +36,175 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), Georgia, serif;
 }
 
+/* Buttons */
 .btn-orange {
   background-color: var(--orange);
   color: white;
-  padding: 0.625rem 1.5rem;
-  border-radius: 0.375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4px;
   font-weight: 700;
-  transition: background-color 0.2s;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn-orange:hover {
-  background-color: #e07d0f;
+  background-color: var(--orange-hover);
 }
 
 .btn-teal {
   background-color: var(--teal);
   color: white;
-  padding: 0.625rem 1.5rem;
-  border-radius: 0.375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4px;
   font-weight: 700;
-  transition: background-color 0.2s;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn-teal:hover {
   background-color: #128f6d;
+}
+
+/* Recipe card styling matching original */
+.recipe-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.recipe-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.recipe-card .card-image {
+  position: relative;
+  padding-top: 66.67%;
+  overflow: hidden;
+}
+
+.recipe-card .card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.recipe-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.recipe-card .card-info {
+  padding: 1.25rem;
+  background: var(--light-gray);
+}
+
+.recipe-card .card-title {
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-card:hover .card-title {
+  color: var(--orange);
+}
+
+.recipe-card .card-meta {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+}
+
+/* Recipe detail page */
+.recipe-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+.recipe-meta-bar > div {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  border-right: 1px solid var(--border);
+}
+
+.recipe-meta-bar > div:last-child {
+  border-right: none;
+}
+
+/* Cooked-style recipe ingredients */
+.ingredient-item {
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.ingredient-item:last-child {
+  border-bottom: none;
+}
+
+/* Step styling */
+.instruction-step {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.instruction-step:last-child {
+  border-bottom: none;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--orange);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+/* Print styles */
+@media print {
+  header, footer, .no-print, nav {
+    display: none !important;
+  }
 }
