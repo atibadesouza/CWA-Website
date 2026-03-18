@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(cuid())
+  username       String   @unique
+  email          String?  @unique
+  hashedPassword String
+  name           String?
+  role           String   @default("user")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  savedRecipes   SavedRecipe[]
+}
+
+model Recipe {
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  description   String?
+  prepTime      String?
+  cookTime      String?
+  totalTime     String?
+  servings      String?
+  difficulty    String?
+  cuisine       String?
+  cookingMethod String?
+  imageUrl      String?
+  ingredients   String   // JSON string array
+  instructions  String   // JSON string array
+  nutrition     String?  // JSON object
+  published     Boolean  @default(true)
+  featured      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  categories    RecipeCategory[]
+  savedBy       SavedRecipe[]
+}
+
+model Category {
+  id       String   @id @default(cuid())
+  name     String   @unique
+  slug     String   @unique
+  parentId String?
+  recipes  RecipeCategory[]
+}
+
+model RecipeCategory {
+  recipe     Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  recipeId   String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+
+  @@id([recipeId, categoryId])
+}
+
+model SavedRecipe {
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  recipeId  String
+  savedAt   DateTime @default(now())
+
+  @@id([userId, recipeId])
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  createdAt DateTime @default(now())
+  read      Boolean  @default(false)
+}
