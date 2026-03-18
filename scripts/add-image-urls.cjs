@@ -1,16 +1,13 @@
-const Database = require("better-sqlite3");
+const fs = require("fs");
 const path = require("path");
 
-const db = new Database(path.join(__dirname, "..", "prisma", "dev.db"));
+let content = fs.readFileSync(path.join(__dirname, "..", "prisma", "seed-db.cjs"), "utf8");
 
-// Slug -> local image path (stored in public/images/recipes/)
-const images = {
-  "no-knead-pull-apart-yeast-dinner-rolls": "/images/recipes/no-knead-pull-apart-yeast-dinner-rolls.jpg",
+const imageMap = {
   "sourdough-bagel": "/images/recipes/sourdough-bagel.jpg",
   "sourdough-berry-galette": "/images/recipes/sourdough-berry-galette.jpg",
   "camellas-hot-harvest-ketchup": "/images/recipes/camellas-hot-harvest-ketchup.jpg",
   "sage-jalapeno-cheddar-sourdough-loaf": "/images/recipes/sage-jalapeno-cheddar-sourdough-loaf.jpg",
-  "authentic-trini-coconut-sweetbread": "/images/recipes/authentic-trini-coconut-sweetbread.jpg",
   "date-night-shrimp-cocktail": "/images/recipes/date-night-shrimp-cocktail.png",
   "sourdough-chocolate-chip-walnut-pancakes": "/images/recipes/sourdough-chocolate-chip-walnut-pancakes.jpg",
   "sourdough-cinnamon-raisin-bread": "/images/recipes/sourdough-cinnamon-raisin-bread.jpg",
@@ -43,19 +40,22 @@ const images = {
   "the-legit-jamaican-coco-bread-recipe": "/images/recipes/the-legit-jamaican-coco-bread-recipe.jpg",
 };
 
-const update = db.prepare("UPDATE Recipe SET imageUrl = ? WHERE slug = ?");
+let count = 0;
+for (const [slug, imgPath] of Object.entries(imageMap)) {
+  const marker = `slug: "${slug}",`;
+  const idx = content.indexOf(marker);
+  if (idx === -1) continue;
 
-let updated = 0;
-for (const [slug, localPath] of Object.entries(images)) {
-  const result = update.run(localPath, slug);
-  if (result.changes > 0) {
-    updated++;
-    console.log(`  Updated: ${slug}`);
-  }
+  // Check if imageUrl already exists on the next line
+  const after = content.substring(idx + marker.length, idx + marker.length + 80);
+  if (after.includes("imageUrl:")) continue;
+
+  // Insert imageUrl after the slug line
+  const insertPoint = idx + marker.length;
+  const newLine = `\n      imageUrl: "${imgPath}",`;
+  content = content.substring(0, insertPoint) + newLine + content.substring(insertPoint);
+  count++;
 }
 
-console.log(`\nUpdated ${updated} recipes with local images.`);
-console.log(`Total recipes: ${db.prepare("SELECT COUNT(*) as c FROM Recipe").get().c}`);
-console.log(`With images: ${db.prepare("SELECT COUNT(*) as c FROM Recipe WHERE imageUrl IS NOT NULL").get().c}`);
-
-db.close();
+fs.writeFileSync(path.join(__dirname, "..", "prisma", "seed-db.cjs"), content);
+console.log(`Added imageUrl to ${count} recipes`);

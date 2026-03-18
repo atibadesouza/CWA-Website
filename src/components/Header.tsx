@@ -13,11 +13,13 @@ export default function Header() {
       {/* Top bar */}
       <div className="max-w-6xl mx-auto px-4">
         {/* Logo */}
-        <div className="flex items-center justify-center py-6">
+        <div className="flex items-center justify-center py-4">
           <Link href="/">
-            <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground tracking-tight">
-              Cooking <span className="text-orange">With</span> Atiba
-            </h1>
+            <img
+              src="/images/logo.jpg"
+              alt="Cooking With Atiba"
+              className="h-16 md:h-20 w-auto"
+            />
           </Link>
         </div>
 

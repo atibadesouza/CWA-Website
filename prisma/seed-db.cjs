@@ -98,21 +98,23 @@ async function main() {
     {
       title: "No Knead Pull Apart Yeast Dinner Rolls",
       slug: "no-knead-pull-apart-yeast-dinner-rolls",
+      imageUrl: "/images/recipes/no-knead-pull-apart-yeast-dinner-rolls.jpg",
       description: "Soft, fluffy pull-apart dinner rolls that require no kneading. Perfect for holidays and family dinners.",
       prepTime: "4 hours", cookTime: "15 minutes", totalTime: "4 hours 15 minutes",
       servings: "12", difficulty: "Intermediate", cuisine: "American", cookingMethod: "Baking",
-      ingredients: ["1.50 cups warm water", "2¼ tsp yeast", "2 tsp coarse salt", "3¼ cups all-purpose flour"],
-      instructions: ["Combine water, salt, yeast in a large bowl.", "Add flour gradually to achieve pancake batter consistency.", "Add remaining flour and mix until no dry patches appear.", "Cover and let rise for 2 hours at room temperature.", "Punch down dough and shape into rolls.", "Let rise for another 1.5-2 hours until doubled.", "Bake at 375°F for 15 minutes until golden brown."],
+      ingredients: ["1.5 cups warm water (about 100°F)", "2¼ tsp yeast (1 packet)", "2 tsp coarse salt", "3¼ cups unsifted all-purpose flour"],
+      instructions: ["Add warm water, salt and yeast to a large bowl.", "Add 1½ cups of flour to the bowl and mix to pancake batter consistency.", "Add the remaining flour.", "Mix with a wooden spoon until there are no patches or pockets of dry flour (may take 3-5 minutes); do not add more water, continue mixing until flour is absorbed.", "Cover dough with damp paper towels or kitchen towel and allow to rise for 2-3 hours.", "Parchment line two 9-inch cake pans.", "Turn dough out on floured surface (dough will be sticky).", "Divide dough into 12 roughly equal-sized pieces.", "Generously flour hands.", "Pick up one dough portion and stretch edges around to bottom/middle on all sides, rotating to create smooth top.", "Place dough ball in center of cake pan.", "Repeat with remaining dough balls, spacing 1 inch apart (may result in one pan with 7, other with 5).", "Cover with damp paper towels; rest 40-45 minutes.", "Place roasting pan on bottom oven rack.", "Preheat oven to 450°F for 30 minutes.", "Boil 2 cups water.", "Place both cake pans in oven.", "Pour 2 cups boiling water into roasting pan on bottom rack; close door quickly (creates steam).", "Bake 14 minutes.", "Reduce temperature to 375°F and remove water pan.", "Bake additional 10-13 minutes until golden brown."],
       categories: ["bread"],
     },
     {
       title: "Authentic Trini Coconut Sweetbread",
       slug: "authentic-trini-coconut-sweetbread",
+      imageUrl: "/images/recipes/authentic-trini-coconut-sweetbread.jpg",
       description: "A traditional Trinidad Christmas bread that has become an everyday treat.",
       prepTime: "45 minutes", cookTime: "60 minutes", totalTime: "1 hour 45 minutes",
       servings: "16", difficulty: "Intermediate", cuisine: "Caribbean", cookingMethod: "Baking",
-      ingredients: ["3 cups all-purpose flour", "1 tablespoon baking powder", "½ cup butter, softened", "1 cup sugar", "2½ cups grated fresh coconut", "1 cup raisins", "½ cup Paradise cherries, halved", "½ cup Paradise mixed peel", "1 teaspoon allspice", "1 teaspoon nutmeg", "2 teaspoons cinnamon", "¾ cup whole milk", "2 teaspoons vanilla extract", "1 egg, beaten", "3 tablespoons sugar (for glaze)", "1½ tablespoons water (for glaze)"],
-      instructions: ["Grate fresh coconut; use white, firm flesh.", "Sift flour and baking powder.", "Cream softened butter and sugar.", "Add coconut, raisins, cherries, mixed peel, allspice, cinnamon, nutmeg.", "Combine egg, milk, vanilla.", "Mix wet into fruit mixture.", "Add flour gradually (¼ cup at a time).", "Grease two 9x5-inch pans.", "Divide dough between pans.", "Press to even thickness.", "Bake at 325°F for 60 minutes.", "Make sugar-water glaze, baste bread, return to off oven 5 min."],
+      ingredients: ["3 cups all-purpose flour", "1 tablespoon baking powder", "½ cup butter, softened", "1 cup sugar", "2½ cups grated fresh coconut", "1 cup raisins", "½ cup Paradise cherries, halved", "½ cup Paradise mixed peel", "1 teaspoon allspice", "1 teaspoon nutmeg", "2 teaspoons cinnamon", "¾ cup whole milk", "2 teaspoons vanilla extract (real)", "1 egg, beaten", "3 tablespoons sugar (for syrup)", "1½ tablespoons water (for syrup)"],
+      instructions: ["Grate fresh coconut; use 2-3 whole coconuts for about 3 cups grated flesh. Select coconuts with white, firm flesh and liquid inside. Use hammer to crack open; butter knife removes flesh from husk. Work quickly after opening (spoils within 60-90 minutes).", "Sift together flour and baking powder in large bowl to reduce density of final product.", "In separate bowl, cream softened butter and sugar together using fork or spoon back.", "Add fruit and spice mixture to creamed butter/sugar: coconut, raisins, cherries, mixed peel, allspice, cinnamon, and nutmeg. Mix thoroughly.", "In third bowl combine wet ingredients: egg, milk, and vanilla extract.", "Add wet ingredients to fruit/spice mixture and combine.", "Add flour ¼ cup at a time to wet ingredient/fruit mix, stirring continuously. Dough will appear dry initially — continue mixing as sweetbread is intentionally dense.", "Grease two 9x5 inch baking pans.", "Divide dough evenly between two pans.", "Using spoon back, press dough into even thickness covering pan base.", "Bake at 325°F for 60 minutes. Test with toothpick in middle — should return clean. If not, add 5-minute increments until toothpick returns clean. Use new toothpick each test.", "Turn off oven.", "Combine 3 tablespoons sugar with 1½ tablespoons water (sugar won't fully dissolve). Generously baste baked bread with sugar water mixture and return to hot (but off) oven for 5 minutes."],
       nutrition: JSON.stringify({ Calories: "361", Carbohydrates: "64g", Protein: "4g", Fat: "11g", Fiber: "4.4g", Sodium: "70mg", Cholesterol: "27mg" }),
       categories: ["bread"],
     },
@@ -127,6 +129,7 @@ async function main() {
     },
     {
       title: "Sourdough Bagel", slug: "sourdough-bagel",
+      imageUrl: "/images/recipes/sourdough-bagel.jpg",
       description: "Chewy, dense sourdough bagels with New York-style crust.",
       prepTime: "30 minutes", cookTime: "25 minutes", totalTime: "14 hours",
       servings: "8", difficulty: "Intermediate", cuisine: "American", cookingMethod: "Baking",
@@ -136,6 +139,7 @@ async function main() {
     },
     {
       title: "Sourdough Berry Galette", slug: "sourdough-berry-galette",
+      imageUrl: "/images/recipes/sourdough-berry-galette.jpg",
       description: "A rustic, free-form sourdough pastry filled with mixed berries.",
       prepTime: "30 minutes", cookTime: "35 minutes", totalTime: "2 hours",
       servings: "8", difficulty: "Intermediate", cuisine: "American", cookingMethod: "Baking",
@@ -145,6 +149,7 @@ async function main() {
     },
     {
       title: "Camella's Hot Harvest Ketchup", slug: "camellas-hot-harvest-ketchup",
+      imageUrl: "/images/recipes/camellas-hot-harvest-ketchup.jpg",
       description: "Homemade ketchup with a spicy kick.",
       prepTime: "15 minutes", cookTime: "45 minutes", totalTime: "1 hour",
       servings: "2 cups", difficulty: "Easy", cuisine: "American", cookingMethod: "Sautee",
@@ -154,6 +159,7 @@ async function main() {
     },
     {
       title: "Sage Jalapeno Cheddar Sourdough Loaf", slug: "sage-jalapeno-cheddar-sourdough-loaf",
+      imageUrl: "/images/recipes/sage-jalapeno-cheddar-sourdough-loaf.jpg",
       description: "Savory sourdough loaded with cheddar, sage, and jalapenos.",
       prepTime: "30 minutes", cookTime: "45 minutes", totalTime: "10 hours",
       servings: "1 loaf", difficulty: "Advanced", cuisine: "American", cookingMethod: "Baking",
@@ -163,6 +169,7 @@ async function main() {
     },
     {
       title: "Date Night Shrimp Cocktail", slug: "date-night-shrimp-cocktail",
+      imageUrl: "/images/recipes/date-night-shrimp-cocktail.png",
       description: "Elegant shrimp cocktail perfect for date night.",
       prepTime: "15 minutes", cookTime: "5 minutes", totalTime: "20 minutes",
       servings: "2", difficulty: "Easy", cuisine: "American", cookingMethod: "Sautee",
@@ -181,6 +188,7 @@ async function main() {
     },
     {
       title: "Sourdough Chocolate Chip Walnut Pancakes", slug: "sourdough-chocolate-chip-walnut-pancakes",
+      imageUrl: "/images/recipes/sourdough-chocolate-chip-walnut-pancakes.jpg",
       description: "Fluffy sourdough pancakes with chocolate chips and walnuts.",
       prepTime: "10 minutes", cookTime: "15 minutes", totalTime: "25 minutes",
       servings: "8 pancakes", difficulty: "Easy", cuisine: "American", cookingMethod: "Frying",
@@ -190,6 +198,7 @@ async function main() {
     },
     {
       title: "Sourdough Cinnamon Raisin Bread", slug: "sourdough-cinnamon-raisin-bread",
+      imageUrl: "/images/recipes/sourdough-cinnamon-raisin-bread.jpg",
       description: "Soft sourdough bread swirled with cinnamon sugar and raisins.",
       prepTime: "30 minutes", cookTime: "40 minutes", totalTime: "10 hours",
       servings: "1 loaf", difficulty: "Intermediate", cuisine: "American", cookingMethod: "Baking",
@@ -199,6 +208,7 @@ async function main() {
     },
     {
       title: "Shrimp Fried Rice", slug: "shrimp-fried-rice",
+      imageUrl: "/images/recipes/shrimp-fried-rice.jpg",
       description: "Quick and flavorful shrimp fried rice with vegetables.",
       prepTime: "15 minutes", cookTime: "15 minutes", totalTime: "30 minutes",
       servings: "4", difficulty: "Easy", cuisine: "American", cookingMethod: "Frying",
@@ -208,6 +218,7 @@ async function main() {
     },
     {
       title: "Simple Sourdough Sandwich Loaf", slug: "simple-sourdough-sandwich-loaf",
+      imageUrl: "/images/recipes/simple-sourdough-sandwich-loaf.jpg",
       description: "Soft, pillowy sourdough bread for everyday sandwiches.",
       prepTime: "20 minutes", cookTime: "35 minutes", totalTime: "10 hours",
       servings: "1 loaf", difficulty: "Intermediate", cuisine: "American", cookingMethod: "Baking",
@@ -217,6 +228,7 @@ async function main() {
     },
     {
       title: "Simple Yellow Split Peas Dhal", slug: "simple-yellow-split-peas-dhal",
+      imageUrl: "/images/recipes/simple-yellow-split-peas-dhal.jpg",
       description: "Comforting Trinidad-style dhal with yellow split peas.",
       prepTime: "10 minutes", cookTime: "40 minutes", totalTime: "50 minutes",
       servings: "6", difficulty: "Easy", cuisine: "Caribbean", cookingMethod: "Sautee",
@@ -226,6 +238,7 @@ async function main() {
     },
     {
       title: "Sourdough Cheddar Biscuits", slug: "sourdough-cheddar-biscuits",
+      imageUrl: "/images/recipes/sourdough-cheddar-biscuits.jpg",
       description: "Flaky, buttery sourdough biscuits with sharp cheddar.",
       prepTime: "15 minutes", cookTime: "15 minutes", totalTime: "30 minutes",
       servings: "12", difficulty: "Easy", cuisine: "American", cookingMethod: "Baking",
@@ -235,6 +248,7 @@ async function main() {
     },
     {
       title: "Olive Oil Dip For Sourdough Bread", slug: "olive-oil-dip-for-sourdough-bread",
+      imageUrl: "/images/recipes/olive-oil-dip-for-sourdough-bread.jpg",
       description: "Simple olive oil dip with herbs and Parmesan.",
       prepTime: "5 minutes", cookTime: "0 minutes", totalTime: "5 minutes",
       servings: "4", difficulty: "Easy", cuisine: "Italian", cookingMethod: "Sautee",
@@ -244,6 +258,7 @@ async function main() {
     },
     {
       title: "Stewed Pumpkin (Trinidad Style)", slug: "stewed-pumpkin-trinidad-style",
+      imageUrl: "/images/recipes/stewed-pumpkin-trinidad-style.jpg",
       description: "Simple, savory Caribbean-style stewed pumpkin.",
       prepTime: "10 minutes", cookTime: "25 minutes", totalTime: "35 minutes",
       servings: "4", difficulty: "Easy", cuisine: "Caribbean", cookingMethod: "Sautee",
@@ -253,6 +268,7 @@ async function main() {
     },
     {
       title: "Sourdough English Muffins", slug: "sourdough-english-muffins",
+      imageUrl: "/images/recipes/sourdough-english-muffins.jpg",
       description: "Classic English muffins with sourdough. Full of nooks and crannies.",
       prepTime: "20 minutes", cookTime: "20 minutes", totalTime: "8 hours",
       servings: "10", difficulty: "Intermediate", cuisine: "American", cookingMethod: "Frying",
@@ -262,6 +278,7 @@ async function main() {
     },
     {
       title: "Grilled Honey Cinnamon Apple Wedges", slug: "grilled-honey-cinnamon-apple-wedges",
+      imageUrl: "/images/recipes/grilled-honey-cinnamon-apple-wedges.jpg",
       description: "Sweet, caramelized grilled apple wedges with honey and cinnamon.",
       prepTime: "10 minutes", cookTime: "8 minutes", totalTime: "18 minutes",
       servings: "4", difficulty: "Easy", cuisine: "American", cookingMethod: "Grilling",
@@ -271,6 +288,7 @@ async function main() {
     },
     {
       title: "Grilled Honey Cinnamon Pineapple Spears", slug: "grilled-honey-cinnamon-pineapple-spears",
+      imageUrl: "/images/recipes/grilled-honey-cinnamon-pineapple-spears.jpg",
       description: "Juicy grilled pineapple with honey-cinnamon glaze.",
       prepTime: "10 minutes", cookTime: "8 minutes", totalTime: "18 minutes",
       servings: "4", difficulty: "Easy", cuisine: "American", cookingMethod: "Grilling",
@@ -280,6 +298,7 @@ async function main() {
     },
     {
       title: "Cast Iron Cornbread", slug: "cast-iron-cornbread",
+      imageUrl: "/images/recipes/cast-iron-cornbread.jpg",
       description: "Golden, crispy-edged cornbread baked in cast iron.",
       prepTime: "10 minutes", cookTime: "25 minutes", totalTime: "35 minutes",
       servings: "8", difficulty: "Easy", cuisine: "Southern", cookingMethod: "Baking",
@@ -289,6 +308,7 @@ async function main() {
     },
     {
       title: "Sriracha Ketchup", slug: "sriracha-ketchup",
+      imageUrl: "/images/recipes/sriracha-ketchup.jpg",
       description: "Quick spicy ketchup for everything.",
       prepTime: "5 minutes", cookTime: "0 minutes", totalTime: "5 minutes",
       servings: "1 cup", difficulty: "Easy", cuisine: "American", cookingMethod: "Sautee",
@@ -298,6 +318,7 @@ async function main() {
     },
     {
       title: "Butter Fried Swai", slug: "butter-fried-swai",
+      imageUrl: "/images/recipes/butter-fried-swai.jpg",
       description: "Pan-fried swai fillets in golden butter.",
       prepTime: "10 minutes", cookTime: "10 minutes", totalTime: "20 minutes",
       servings: "4", difficulty: "Easy", cuisine: "American", cookingMethod: "Frying",
@@ -307,6 +328,7 @@ async function main() {
     },
     {
       title: "Jerk Shrimp", slug: "jerk-shrimp",
+      imageUrl: "/images/recipes/jerk-shrimp.jpg",
       description: "Spicy, smoky Caribbean jerk-seasoned shrimp.",
       prepTime: "15 minutes", cookTime: "8 minutes", totalTime: "23 minutes",
       servings: "4", difficulty: "Easy", cuisine: "Caribbean", cookingMethod: "Grilling",
@@ -316,6 +338,7 @@ async function main() {
     },
     {
       title: "Pineapple Mango Salsa", slug: "pineapple-mango-salsa",
+      imageUrl: "/images/recipes/pineapple-mango-salsa.jpg",
       description: "Fresh tropical fruit salsa.",
       prepTime: "15 minutes", cookTime: "0 minutes", totalTime: "15 minutes",
       servings: "4", difficulty: "Easy", cuisine: "Latino", cookingMethod: "Sautee",
@@ -325,6 +348,7 @@ async function main() {
     },
     {
       title: "Belgian Waffles", slug: "belgian-waffles",
+      imageUrl: "/images/recipes/belgian-waffles.jpg",
       description: "Light, crispy Belgian waffles with deep pockets.",
       prepTime: "15 minutes", cookTime: "20 minutes", totalTime: "35 minutes",
       servings: "6", difficulty: "Easy", cuisine: "American", cookingMethod: "Baking",
@@ -334,6 +358,7 @@ async function main() {
     },
     {
       title: "Coconut Ice Cream", slug: "coconut-ice-cream",
+      imageUrl: "/images/recipes/coconut-ice-cream.jpg",
       description: "Creamy homemade coconut ice cream. Dairy-free friendly.",
       prepTime: "15 minutes", cookTime: "0 minutes", totalTime: "4 hours",
       servings: "6", difficulty: "Easy", cuisine: "Caribbean", cookingMethod: "Sautee",
@@ -343,6 +368,7 @@ async function main() {
     },
     {
       title: "Easy 4 Ingredient No Knead Rolls", slug: "easy-4-ingredient-no-knead-rolls",
+      imageUrl: "/images/recipes/easy-4-ingredient-no-knead-rolls.jpg",
       description: "Easiest dinner rolls. 4 ingredients, no kneading.",
       prepTime: "10 minutes", cookTime: "20 minutes", totalTime: "2 hours 30 minutes",
       servings: "12", difficulty: "Easy", cuisine: "American", cookingMethod: "Baking",
@@ -352,6 +378,7 @@ async function main() {
     },
     {
       title: "Stewed Red Beans (Trinidad Style)", slug: "stewed-red-beans-trinidad-style",
+      imageUrl: "/images/recipes/stewed-red-beans-trinidad-style.jpg",
       description: "Hearty Trinidad-style stewed red beans.",
       prepTime: "10 minutes", cookTime: "45 minutes", totalTime: "55 minutes",
       servings: "6", difficulty: "Easy", cuisine: "Caribbean", cookingMethod: "Sautee",
@@ -370,6 +397,7 @@ async function main() {
     },
     {
       title: "Sourdough Cranberry Orange Muffins", slug: "sourdough-cranberry-orange-muffins",
+      imageUrl: "/images/recipes/sourdough-cranberry-orange-muffins.jpg",
       description: "Tender muffins with cranberries and orange zest.",
       prepTime: "15 minutes", cookTime: "22 minutes", totalTime: "37 minutes",
       servings: "12", difficulty: "Easy", cuisine: "American", cookingMethod: "Baking",
@@ -379,6 +407,7 @@ async function main() {
     },
     {
       title: "20 min Sourdough Pancakes", slug: "20-min-sourdough-pancakes",
+      imageUrl: "/images/recipes/20-min-sourdough-pancakes.jpg",
       description: "Quick sourdough pancakes in 20 minutes.",
       prepTime: "5 minutes", cookTime: "15 minutes", totalTime: "20 minutes",
       servings: "8", difficulty: "Easy", cuisine: "American", cookingMethod: "Frying",
@@ -388,6 +417,7 @@ async function main() {
     },
     {
       title: "SMH Biscuits", slug: "smh-biscuits",
+      imageUrl: "/images/recipes/smh-biscuits.png",
       description: "Soft, melt-in-your-mouth homemade biscuits.",
       prepTime: "15 minutes", cookTime: "15 minutes", totalTime: "30 minutes",
       servings: "10", difficulty: "Easy", cuisine: "Southern", cookingMethod: "Baking",
@@ -397,6 +427,7 @@ async function main() {
     },
     {
       title: "Fragrant Lemon Herb Salmon", slug: "fragrant-lemon-herb-salmon",
+      imageUrl: "/images/recipes/fragrant-lemon-herb-salmon.jpg",
       description: "Baked salmon with lemon, herbs, and garlic.",
       prepTime: "10 minutes", cookTime: "15 minutes", totalTime: "25 minutes",
       servings: "4", difficulty: "Easy", cuisine: "American", cookingMethod: "Baking",
@@ -406,6 +437,7 @@ async function main() {
     },
     {
       title: "Crispy Air Fried Zucchini Fries", slug: "crispy-air-fried-zucchini-fries",
+      imageUrl: "/images/recipes/crispy-air-fried-zucchini-fries.jpg",
       description: "Crunchy outside, tender inside. Healthier fries.",
       prepTime: "15 minutes", cookTime: "12 minutes", totalTime: "27 minutes",
       servings: "4", difficulty: "Easy", cuisine: "American", cookingMethod: "Air Frying",
@@ -415,6 +447,7 @@ async function main() {
     },
     {
       title: "Broiled Sweet Thai Chili Salmon and Spinach", slug: "broiled-sweet-thai-chili-salmon-and-spinach",
+      imageUrl: "/images/recipes/broiled-sweet-thai-chili-salmon-and-spinach.jpg",
       description: "Quick broiled salmon with Thai chili glaze on spinach.",
       prepTime: "10 minutes", cookTime: "12 minutes", totalTime: "22 minutes",
       servings: "4", difficulty: "Easy", cuisine: "American", cookingMethod: "Baking",
@@ -424,6 +457,7 @@ async function main() {
     },
     {
       title: "Crispy Chunky Granola", slug: "crispy-chunky-granola",
+      imageUrl: "/images/recipes/crispy-chunky-granola.jpg",
       description: "Crunchy granola with big clusters, nuts, and fruit.",
       prepTime: "10 minutes", cookTime: "30 minutes", totalTime: "40 minutes",
       servings: "8", difficulty: "Easy", cuisine: "American", cookingMethod: "Baking",
@@ -433,6 +467,7 @@ async function main() {
     },
     {
       title: "Chicken Tinga", slug: "chicken-tinga",
+      imageUrl: "/images/recipes/chicken-tinga.jpg",
       description: "Smoky shredded chicken in chipotle tomato sauce.",
       prepTime: "15 minutes", cookTime: "30 minutes", totalTime: "45 minutes",
       servings: "6", difficulty: "Easy", cuisine: "Latino", cookingMethod: "Sautee",
@@ -442,6 +477,7 @@ async function main() {
     },
     {
       title: "The Legit Jamaican Coco Bread Recipe", slug: "the-legit-jamaican-coco-bread-recipe",
+      imageUrl: "/images/recipes/the-legit-jamaican-coco-bread-recipe.jpg",
       description: "Soft, buttery Jamaican coco bread with coconut milk.",
       prepTime: "30 minutes", cookTime: "20 minutes", totalTime: "2 hours 50 minutes",
       servings: "8", difficulty: "Intermediate", cuisine: "Caribbean", cookingMethod: "Baking",
@@ -479,7 +515,7 @@ async function main() {
       recipe.difficulty || null,
       recipe.cuisine || null,
       recipe.cookingMethod || null,
-      null, // imageUrl
+      recipe.imageUrl || null,
       JSON.stringify(recipe.ingredients),
       JSON.stringify(recipe.instructions),
       recipe.nutrition || null,

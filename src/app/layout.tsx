@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "Cooking With Atiba",
   description:
     "Delicious recipes from sourdough breads to Caribbean classics. Cooking With Atiba brings you tried and tested recipes for every occasion.",
+  icons: {
+    icon: "/images/logo.jpg",
+    apple: "/images/logo.jpg",
+  },
 };
 
 export default function RootLayout({
