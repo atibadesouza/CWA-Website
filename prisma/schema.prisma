@@ -32,9 +32,10 @@ model Recipe {
   cuisine       String?
   cookingMethod String?
   imageUrl      String?
-  gallery       String?  // JSON string array of additional image paths
-  ingredients   String   // JSON string array
-  instructions  String   // JSON string array
+  gallery           String?  // JSON string array of additional image paths
+  ingredients       String   // JSON string array
+  instructions      String   // JSON string array
+  instructionImages String?  // JSON object mapping step index to image path
   nutrition     String?  // JSON object
   published     Boolean  @default(true)
   featured      Boolean  @default(false)

@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import PrintButton from "@/components/PrintButton";
+import GallerySlider from "@/components/GallerySlider";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -27,6 +28,15 @@ export default async function RecipePage({ params }: Props) {
   const gallery: string[] = recipe.gallery
     ? JSON.parse(recipe.gallery)
     : [];
+  const instructionImages: Record<string, string> = recipe.instructionImages
+    ? JSON.parse(recipe.instructionImages)
+    : {};
+
+  // Combine cover + gallery for slider
+  const allImages = [
+    ...(recipe.imageUrl ? [recipe.imageUrl] : []),
+    ...gallery,
+  ];
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
@@ -68,30 +78,9 @@ export default async function RecipePage({ params }: Props) {
         </div>
       </header>
 
-      {/* Featured Image */}
-      {recipe.imageUrl && (
-        <div className="mb-8">
-          <img
-            src={recipe.imageUrl}
-            alt={recipe.title}
-            className="w-full h-auto rounded"
-          />
-        </div>
-      )}
-
-      {/* Photo Gallery */}
-      {gallery.length > 0 && (
-        <div className="mb-8 grid grid-cols-2 md:grid-cols-3 gap-3">
-          {gallery.map((img, i) => (
-            <img
-              key={i}
-              src={img}
-              alt={`${recipe.title} - photo ${i + 1}`}
-              className="w-full h-auto rounded object-cover aspect-square"
-              loading="lazy"
-            />
-          ))}
-        </div>
+      {/* Photo Gallery Slider */}
+      {allImages.length > 0 && (
+        <GallerySlider images={allImages} title={recipe.title} />
       )}
 
       {/* Description */}
@@ -160,9 +149,22 @@ export default async function RecipePage({ params }: Props) {
           </h2>
           <div>
             {instructions.map((step, i) => (
-              <div key={i} className="instruction-step">
-                <div className="step-number">{i + 1}</div>
-                <p className="text-foreground leading-relaxed pt-1 flex-1">{step}</p>
+              <div key={i}>
+                <div className="instruction-step">
+                  <div className="step-number">{i + 1}</div>
+                  <p className="text-foreground leading-relaxed pt-1 flex-1">{step}</p>
+                </div>
+                {/* Inline image after this step */}
+                {instructionImages[String(i)] && (
+                  <div className="ml-12 mb-4">
+                    <img
+                      src={instructionImages[String(i)]}
+                      alt={`Step ${i + 1}`}
+                      className="w-full max-w-md h-auto rounded shadow-sm"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>
