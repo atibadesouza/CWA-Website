@@ -24,6 +24,9 @@ export default async function RecipePage({ params }: Props) {
   const nutrition: Record<string, string> | null = recipe.nutrition
     ? JSON.parse(recipe.nutrition)
     : null;
+  const gallery: string[] = (recipe as Record<string, unknown>).gallery
+    ? JSON.parse((recipe as Record<string, unknown>).gallery as string)
+    : [];
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
@@ -73,6 +76,21 @@ export default async function RecipePage({ params }: Props) {
             alt={recipe.title}
             className="w-full h-auto rounded"
           />
+        </div>
+      )}
+
+      {/* Photo Gallery */}
+      {gallery.length > 0 && (
+        <div className="mb-8 grid grid-cols-2 md:grid-cols-3 gap-3">
+          {gallery.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt={`${recipe.title} - photo ${i + 1}`}
+              className="w-full h-auto rounded object-cover aspect-square"
+              loading="lazy"
+            />
+          ))}
         </div>
       )}
 

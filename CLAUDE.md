@@ -40,7 +40,9 @@ The app uses Next.js route groups to apply different layouts:
 
 SQLite via Prisma 6. The `.env` `DATABASE_URL` uses an **absolute Windows path** to `prisma/dev.db` because relative paths resolve inconsistently during Next.js builds on Windows.
 
-**Important schema note:** `Recipe.ingredients`, `Recipe.instructions`, and `Recipe.nutrition` are stored as JSON strings (not relations). Parse with `JSON.parse()` when reading; stringify with `JSON.stringify()` when writing. Ingredients and instructions are `string[]`; nutrition is `Record<string, string> | null`.
+**Important schema note:** `Recipe.ingredients`, `Recipe.instructions`, `Recipe.gallery`, and `Recipe.nutrition` are stored as JSON strings (not relations). Parse with `JSON.parse()` when reading; stringify with `JSON.stringify()` when writing. Ingredients and instructions are `string[]`; gallery is `string[] | null` (local image paths); nutrition is `Record<string, string> | null`.
+
+**Image storage:** Recipe images are stored locally in `public/images/recipes/`. Cover images use `Recipe.imageUrl` (e.g., `/images/recipes/slug.jpg`). Additional gallery/process photos are in subdirectories (e.g., `/images/recipes/slug/gallery-1.jpg`) and referenced via `Recipe.gallery`.
 
 Categories use a many-to-many join table (`RecipeCategory`) and support parent-child hierarchy via `Category.parentId`.
 
