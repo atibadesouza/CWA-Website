@@ -24,8 +24,8 @@ export default async function RecipePage({ params }: Props) {
   const nutrition: Record<string, string> | null = recipe.nutrition
     ? JSON.parse(recipe.nutrition)
     : null;
-  const gallery: string[] = (recipe as Record<string, unknown>).gallery
-    ? JSON.parse((recipe as Record<string, unknown>).gallery as string)
+  const gallery: string[] = recipe.gallery
+    ? JSON.parse(recipe.gallery)
     : [];
 
   return (
