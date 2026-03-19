@@ -4,16 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Cooking With Atiba — a recipe website clone of cookingwithatiba.com. Built with Next.js 16 (App Router), Prisma 6 with SQLite, NextAuth.js (beta) for credentials-based auth, and Tailwind CSS 4.
+Cooking With Atiba — a recipe website clone of cookingwithatiba.com. Built with Next.js 16 (App Router), Prisma 6 with Neon PostgreSQL, NextAuth.js (beta) for credentials-based auth, and Tailwind CSS 4. Deployed on Vercel.
 
 ## Commands
 
 - **Dev server:** `npm run dev` (runs on port 3000)
 - **Build:** `npm run build`
 - **Lint:** `npm run lint`
-- **Seed database:** `node prisma/seed-db.cjs` (uses better-sqlite3 directly; the Prisma-based seed scripts in seed.ts/seed.mjs have ESM compatibility issues on Windows)
+- **Seed database:** `npx prisma db seed` (reads from prisma/seed-data.json)
 - **Prisma generate:** `npx prisma generate` (after schema changes)
-- **Prisma migrate:** `npx prisma db push` (push schema to SQLite)
+- **Prisma migrate:** `npx prisma db push` (push schema to Neon PostgreSQL)
 
 ## Architecture
 
@@ -38,11 +38,13 @@ The app uses Next.js route groups to apply different layouts:
 
 ### Database
 
-SQLite via Prisma 6. The `.env` `DATABASE_URL` uses an **absolute Windows path** to `prisma/dev.db` because relative paths resolve inconsistently during Next.js builds on Windows.
+Neon PostgreSQL via Prisma 6. `DATABASE_URL` is a Neon pooled connection string; `DIRECT_URL` is the direct connection (used for migrations). Both are set as environment variables (locally in `.env`, on Vercel via dashboard).
 
-**Important schema note:** `Recipe.ingredients`, `Recipe.instructions`, `Recipe.gallery`, and `Recipe.nutrition` are stored as JSON strings (not relations). Parse with `JSON.parse()` when reading; stringify with `JSON.stringify()` when writing. Ingredients and instructions are `string[]`; gallery is `string[] | null` (local image paths); nutrition is `Record<string, string> | null`.
+**Important schema note:** `Recipe.ingredients`, `Recipe.instructions`, `Recipe.gallery`, `Recipe.instructionImages`, and `Recipe.nutrition` are stored as JSON strings (not relations). Parse with `JSON.parse()` when reading; stringify with `JSON.stringify()` when writing. Ingredients and instructions are `string[]`; gallery is `string[] | null` (local image paths); instructionImages is `Record<string, string> | null` (step index -> image path); nutrition is `Record<string, string> | null`.
 
 **Image storage:** Recipe images are stored locally in `public/images/recipes/`. Cover images use `Recipe.imageUrl` (e.g., `/images/recipes/slug.jpg`). Additional gallery/process photos are in subdirectories (e.g., `/images/recipes/slug/gallery-1.jpg`) and referenced via `Recipe.gallery`.
+
+**Seeding:** All recipe data is exported in `prisma/seed-data.json`. Run `npx prisma db seed` to populate a fresh database. The old `seed-db.cjs` and `scripts/*.cjs` files use better-sqlite3 and are kept for reference only.
 
 Categories use a many-to-many join table (`RecipeCategory`) and support parent-child hierarchy via `Category.parentId`.
 
@@ -65,4 +67,4 @@ Server components are the default. Client components (`"use client"`) are used o
 
 ### Prisma Version Constraint
 
-This project uses **Prisma 6** (not 7). Prisma 7 requires driver adapters for all databases including SQLite, which adds complexity. Do not upgrade without migrating to a driver adapter setup.
+This project uses **Prisma 6** (not 7). Prisma 7 requires driver adapters for all databases, which adds complexity. Do not upgrade without migrating to a driver adapter setup.
